@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Eat起吃飯｜探店美食地圖</title>
+
+  <style>
+    .card-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+    .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+    .card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+    .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  border-left: 5px solid #ff7a59;
+  padding-left: 12px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filter {
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #f3eee9;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.filter.active {
+  background: #ff7a59;
+  color: white;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  max-width: 380px;
+}
+
+.card-img {
+  position: relative;
+}
+
+.card-img img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.tag {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  background: #ffc85c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-content {
+  padding: 18px;
+}
+
+.card-content h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.rating {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.location {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.card-actions a,
+.video-btn,
+.map-btn {
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.map-btn {
+  background: #ff7a59;
+  color: white;
+}
+
+.video-btn {
+  background: #ffe6df;
+  color: #d85c28;
+}
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #fff8f2;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    /* 導覽列 */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .nav-brand img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .nav-links a.active {
+      color: #ff6b3d;
+      border-bottom: 3px solid #ff6b3d;
+      padding-bottom: 6px;
+    }
+
+    /* Hero */
+   .hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+
+  background-image:
+    linear-gradient(rgba(255, 248, 242, 0.72), rgba(255, 248, 242, 0.72)),
+    url("images/hero-bg.png");
+
+  background-size: cover;
+  background-position: center;
+  border-radius: 28px;
+  padding: 52px;
+  margin-bottom: 36px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.hero-left {
+  color: #6b3f25;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 28px;
+}
+
+.hero-logo img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hero h1 {
+  font-size: 56px;
+  margin: 0 0 16px;
+}
+
+.hero p {
+  font-size: 22px;
+  margin-bottom: 28px;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: #6b3f25;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.features {
+  display: flex;
+  gap: 32px;
+  margin-top: 36px;
+  color: #6b3f25;
+}
+
+.features strong {
+  margin-left: 6px;
+}
+
+.hero-map {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+.hero-map iframe {
+  width: 100%;
+  height: 360px;
+  border: 0;
+  display: block;
+}
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    
+  <div class="container">
+
+    <nav class="navbar">
+      <div class="nav-brand">
+        <img src="images/logo.png" alt="Eat起吃飯 Logo">
+        <span>Eat起吃飯</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#" class="active">首頁</a>
+        <a href="#">美食地圖</a>
+        <a href="#">推薦美食</a>
+        <a href="#">關於我</a>
+      </div>
+    </nav>
+
+   <section class="hero">
+  <div class="hero-left">
+    <div class="hero-logo">
+      <img src="images/logo.png" alt="Eat起吃飯">
+      <span>Eat起吃飯</span>
+    </div>
+
+    <h1>探店美食地圖</h1>
+    <p>跟著 Eat起吃飯，一起找到真正好吃的店</p>
+
+    <a class="hero-btn"
+       href="https://youtube.com/channel/UCZOZiP87pfb1w74lnRSg86A"
+       target="_blank">
+      ▶ 前往頻道
+    </a>
+
+    <div class="features">
+      <div>📍<strong>真實探店</strong><br>親自走訪每一間店</div>
+      <div>🍴<strong>美食推薦</strong><br>好吃才推薦給你</div>
+      <div>💗<strong>用心分享</strong><br>記錄與好每一刻</div>
+    </div>
+  </div>
+
+  <div class="hero-map">
+    <iframe
+      src="https://www.google.com/maps?q=桃園市平鎮區文化街198號&output=embed"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+    <div class="section-header">
+      <div class="section-title">我的美食地圖</div>
+      <a class="video-btn" href="#" style="text-decoration:none; padding:10px 18px; border-radius:999px;">查看全部 ›</a>
+    </div>
+
+    <div class="filters">
+     <button class="filter" onclick="filterCards('全部')">全部</button>
+<button class="filter" onclick="filterCards('早餐')">早餐</button>
+<button class="filter" onclick="filterCards('午餐')">午餐</button>
+<button class="filter" onclick="filterCards('下午茶')">下午茶</button>
+<button class="filter" onclick="filterCards('晚餐')">晚餐</button>
+<button class="filter" onclick="filterCards('宵夜')">宵夜</button>
+    </div>
+
+    <section class="cards">
+ <article class="card" data-category="早餐" onclick="goVideo()">
+    <div class="card-img">
+      <img src="images/shuyuan.jpg" alt="菽元早餐">
+      <span class="tag">早餐</span>
+    </div>
+
+    <div class="card-content">
+      <h3>菽元早餐</h3>
+      <div class="rating">⭐ 4.8（你的推薦）</div>
+      <div class="location">📍 桃園市平鎮區文化街198號</div>
+
+      <div class="card-actions">
+        <a class="map-btn"
+           href="https://www.google.com/maps/place/%E8%8F%BD%E5%85%83%E6%97%A9%E9%A4%90/@24.9522161,121.20315,17z/data=!3m1!4b1!4m6!3m5!1s0x346823badb2222ff:0xe3d16b7d440d72d3!8m2!3d24.9522161!4d121.20315!16s%2Fg%2F11f15m4vn_?entry=ttu"
+           target="_blank"
+           onclick="event.stopPropagation()">
+          查看地圖
+        </a>
+
+        <a class="video-btn"
+           href="https://www.youtube.com/shorts/QV5uTp_y4Uc"
+           target="_blank"
+           onclick="event.stopPropagation()">
+          看短影音
+        </a>
+      </div>
+    </div>
+    </article>
+<article class="card" data-category="午餐" onclick="window.open('https://www.youtube.com/shorts/BjzzpSr_6sM','_blank')">
+  <div class="card-img">
+    <!-- 這裡換成你剛剛那張做好的封面圖 -->
+    <img src="images/lazycook.jpg" alt="懶得煮">
+    <span class="tag">午餐</span>
+  </div>
+
+  <div class="card-content">
+    <h3>懶得煮</h3>
+    <div class="rating">⭐ 4.7（你的推薦）</div>
+    <div class="location">📍 330桃園市平鎮區南平路443-2號</div>
+
+    <div class="card-actions">
+      <a class="map-btn"
+         href="https://www.google.com/maps/place/%E6%87%B6%E5%BE%97%E7%85%AE/@25.0167477,121.2953281,17z/data=!3m1!4b1!4m6!3m5!1s0x34681fbaed037b79:0x617357df65cbba1d!8m2!3d25.0167477!4d121.2953281!16s%2Fg%2F1pzwp_qkl?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+         target="_blank"
+         onclick="event.stopPropagation()">
+        查看地圖
+      </a>
+
+      <a class="video-btn"
+         href="https://www.youtube.com/shorts/BjzzpSr_6sM"
+         target="_blank"
+         onclick="event.stopPropagation()">
+        看短影音
+      </a>
+    </div>
+  </div>
+</article>
+<article class="card" data-category="晚餐" onclick="window.open('https://www.youtube.com/shorts/xUEMDi85Bt4','_blank')">
+  <div class="card-img">
+    <img src="images/yisimen.jpg" alt="一私麵宅">
+    <span class="tag">晚餐</span>
+  </div>
+
+  <div class="card-content">
+    <h3>一私麵宅</h3>
+    <div class="rating">⭐ 4.7（你的推薦）</div>
+    <div class="location">📍 324桃園市平鎮區延平路二段18號</div>
+
+    <div class="card-actions">
+      <a class="map-btn"
+         href="https://www.google.com/maps?q=324桃園市平鎮區延平路二段18號"
+         target="_blank"
+         onclick="event.stopPropagation()">
+        查看地圖
+      </a>
+
+      <a class="video-btn"
+         href="https://www.youtube.com/shorts/xUEMDi85Bt4"
+         target="_blank"
+         onclick="event.stopPropagation()">
+        看短影音
+      </a>
+    </div>
+  </div>
+</article>
+</section>
+
+  </div>
+<script>
+// 點擊卡片跳轉影片的功能
+function goVideo() {
+  window.open("https://www.youtube.com/shorts/QV5uTp_y4Uc", "_blank");
+}
+
+// 篩選功能
+function filterCards(category) {
+  const cards = document.querySelectorAll('.card');
+  const filters = document.querySelectorAll('.filter');
+
+  // 更新按鈕的 active 樣式（選選中的變橘色）
+  filters.forEach(btn => {
+    if(btn.innerText === category) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // 執行篩選顯示/隱藏
+  cards.forEach(card => {
+    const cardCategory = card.getAttribute('data-category');
+    if (category === '全部' || cardCategory === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+
+</html>
