@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>桃園平鎮探店地圖｜Eat起吃飯</title>
+  <meta name="description" content="Eat起吃飯整理桃園平鎮在地美食地圖，收錄菽元早餐、懶得煮、一私麵宅等探店紀錄。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #fff8f2;
+      color: #2b1b12;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 28px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .nav-brand img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .nav-links a.active {
+      color: #ff6b3d;
+      border-bottom: 3px solid #ff6b3d;
+      padding-bottom: 6px;
+    }
+
+    .page-title {
+      margin-bottom: 24px;
+    }
+
+    .page-title h1 {
+      font-size: 42px;
+      margin: 0 0 10px;
+      color: #6b3f25;
+    }
+
+    .page-title p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #6b3f25;
+      max-width: 720px;
+    }
+
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .map-box {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      background: white;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 560px;
+      border: 0;
+      display: block;
+    }
+
+    .shop-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .shop-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      background: white;
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+    .shop-card img {
+      width: 120px;
+      height: 95px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .shop-info h3 {
+      margin: 0 0 6px;
+      font-size: 21px;
+      color: #2b1b12;
+    }
+
+    .shop-info p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffc85c;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .map-btn {
+      background: #ff7a59;
+      color: white;
+    }
+
+    .video-btn {
+      background: #ffe6df;
+      color: #d85c28;
+    }
+
+    @media (max-width: 900px) {
+      .map-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .page-title h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <nav class="navbar">
+      <div class="nav-brand">
+        <img src="images/logo.png" alt="Eat起吃飯 Logo">
+        <span>Eat起吃飯</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">首頁</a>
+        <a href="map.html" class="active">美食地圖</a>
+        <a href="index.html#cards">推薦美食</a>
+        <a href="#">關於我</a>
+      </div>
+    </nav>
+
+    <section class="page-title">
+      <h1>桃園平鎮探店地圖</h1>
+      <p>
+        這裡整理 Eat起吃飯實際走訪過的桃園平鎮美食，
+        包含早餐、午餐與晚餐推薦，讓你可以直接用地圖找到附近好吃的店。
+      </p>
+    </section>
+
+    <section class="map-layout">
+
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps?q=桃園市平鎮區文化街198號,桃園市平鎮區南平路443-2號,桃園市平鎮區延平路二段18號&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="shop-list">
+
+        <div class="shop-card">
+          <img src="images/shuyuan.jpg" alt="菽元早餐">
+          <div class="shop-info">
+            <span class="tag">早餐</span>
+            <h3>菽元早餐</h3>
+            <p>⭐ 4.8（你的推薦）</p>
+            <p>📍 桃園市平鎮區文化街198號</p>
+            <p>平鎮早餐推薦，適合想吃高 CP 值早餐的人。</p>
+            <div class="buttons">
+              <a class="map-btn" href="https://www.google.com/maps?q=桃園市平鎮區文化街198號" target="_blank">查看地圖</a>
+              <a class="video-btn" href="https://www.youtube.com/shorts/QV5uTp_y4Uc" target="_blank">看短影音</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <img src="images/lazycook.jpg" alt="懶得煮">
+          <div class="shop-info">
+            <span class="tag">午餐</span>
+            <h3>懶得煮</h3>
+            <p>⭐ 4.7（你的推薦）</p>
+            <p>📍 330桃園市平鎮區南平路443-2號</p>
+            <p>平鎮平價午餐推薦，份量大、CP 值高。</p>
+            <div class="buttons">
+              <a class="map-btn" href="https://www.google.com/maps?q=330桃園市平鎮區南平路443-2號" target="_blank">查看地圖</a>
+              <a class="video-btn" href="https://www.youtube.com/shorts/BjzzpSr_6sM" target="_blank">看短影音</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <img src="images/yisimen.jpg" alt="一私麵宅">
+          <div class="shop-info">
+            <span class="tag">晚餐</span>
+            <h3>一私麵宅</h3>
+            <p>⭐ 4.7（你的推薦）</p>
+            <p>📍 324桃園市平鎮區延平路二段18號</p>
+            <p>平鎮晚餐與麵食推薦，適合想吃麵、滷肉飯、小菜的人。</p>
+            <div class="buttons">
+              <a class="map-btn" href="https://www.google.com/maps?q=324桃園市平鎮區延平路二段18號" target="_blank">查看地圖</a>
+              <a class="video-btn" href="https://www.youtube.com/shorts/xUEMDi85Bt4" target="_blank">看短影音</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+</body>
+</html>
