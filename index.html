@@ -214,10 +214,10 @@
 
     /* Hero */
    .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  text-align: left;
 
   background-image:
     linear-gradient(rgba(255, 248, 242, 0.72), rgba(255, 248, 242, 0.72)),
@@ -226,13 +226,16 @@
   background-size: cover;
   background-position: center;
   border-radius: 28px;
-  padding: 52px;
+
+  padding: 70px 60px;
   margin-bottom: 36px;
+
   box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 .hero-left {
   color: #6b3f25;
+  max-width: 760px;
 }
 
 .hero-logo {
@@ -252,18 +255,17 @@
 }
 
 .hero h1 {
-  font-size: 60px;
-  line-height: 1.18;
-  letter-spacing: 2px;
-  margin: 0 0 10px;
+  font-size: 68px;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  margin: 0 0 18px;
   font-weight: 800;
 }
 
 .hero h2 {
-  font-size: 26px;
-  line-height: 1.35;
-  letter-spacing: 1px;
-  margin: 0 0 22px;
+  font-size: 30px;
+  line-height: 1.5;
+  margin-bottom: 28px;
   font-weight: 700;
   color: #7a4a2c;
 }
@@ -288,11 +290,11 @@
 
 .features {
   display: flex;
-  gap: 28px;
-  margin-top: 28px;
+  gap: 40px;
+  margin-top: 40px;
   color: #6b3f25;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .features div {
@@ -359,13 +361,11 @@
       <span>Eat起吃飯</span>
     </div>
 
-  <h1>平鎮美食推薦</h1>
-  <h2>早餐、午餐、晚餐在地整理</h2>
+  <h1>平鎮美食推薦｜桃園平價早餐、午餐、晚餐地圖</h1>
     <p class="hero-desc">
-這是一個整理桃園平鎮在地美食的探店地圖，
-包含早餐、午餐、晚餐與宵夜推薦，
-像是菽元早餐、懶得煮、一私麵宅等，
-都是實際探訪後整理的平價美食名單。
+這是一個整理桃園平鎮美食的探店地圖，
+包含平價早餐、午餐、晚餐與宵夜推薦，
+適合正在尋找平鎮美食推薦與桃園餐廳的人參考。
 </p>
 
     <a class="hero-btn"
@@ -381,12 +381,7 @@
     </div>
   </div>
 
-  <div class="hero-map">
-    <iframe
-      src="https://www.google.com/maps?q=桃園市平鎮區文化街198號&output=embed"
-      loading="lazy">
-    </iframe>
-  </div>
+
 </section>
 
     <div class="section-header">
